@@ -1,0 +1,115 @@
+
+==========================chat=====================================================
+Volodymyr Khomenkoem 09:02 PM
+Dear Nelson Tan.
+This is a blockchain and javascript developer and I am excited to read your job post.
+I am very skillful in Dexes like pancakeswap and sushiswap and I developed many many trading bots in the past.
+Also, I have experience for a frontend blockchain developer, and that's why I'm writing this proposal.
+I am the best fit for your project.
+I look forward to hearing from you soon and discuss in more detail
+Thank you.
+Volodymyr K.
+
+Nelson Tan 09:02 PM
+Hi Mr. Volodymyr K,
+
+Thanks for writing in. There are 12 other shortlisted guys competing with you but let's go along with you as my first choice. Please go through the following points before I officially hire you:
+
+1) The PCS bot can be downloaded for free here: https://github.com/lmusarella/Pancakeswap-Prediction-Bot
+It can be run on demo, so give yourself a day to get a feel for how it works.
+Then you can follow this discussion thread: https://github.com/lmusarella/Pancakeswap-Prediction-Bot/discussions/13
+2) Download this zip file which contains my ideas for betting modification: https://drive.google.com/file/d/1eqdWYA5ExcD78m9rhVb4wP5Lg4vHDUL1/view?usp=drive_link
+Note there are 2 methods being described: one with throwaway bets and the other is a 30/70 betting method.
+3) Budget concerns: Upwork asks for maximum budget, so I put $100 lol.
+I'm only asking to modify current martingale feature to include throwaway bets (this is priority and I believe can be quickly done). If final product ends up with extra 50 lines of code or less, I'm not sure if it justifies the price of $100. I'm ready to pay avg $1 per line.
+However, if you think you can also include the second betting method for a good price and it doesn't take long, everything is up for discussion.
+4) No backdoor shenanigans, no fancy flourishes. But if you found some other shortcomings in the code that needs to be addressed, let me know so we can discuss. The bot is currently stable as it is.
+5) Final product should come with a summary sheet of what you have done like where are the new changes in which files so I don't have to go file by file, line by line to compare with the original (or go according to your usual practice).
+Take your time before you reply. Feel free to ask questions.
+best regards,
+Nelson
+
+Tue, May 30
+Nelson Tan 08:40 AM
+Please acknowledge that you have read my message so I won't approach other programmers for the time being, thanks.
+
+Volodymyr Khomenkoem 10:46 AM
+Hi, Nelson.
+I've read your message and thank you.
+the thing is, I tried to download the zip file that contains your ideas for betting modification: https://drive.google.com/file/d/1eqdWYA5ExcD78m9rhVb4wP5Lg4vHDUL1/view?usp=drive_link, but access denied.
+will you plz confirm it and allow me to access?
+
+Nelson Tan 07:03 PM
+Upwork has detected a potential risk with the content of this message.
+Hi Volodymyr,
+Try this link: https://www.internetmasterycenter.com/pcsmartingale.zip
+best regards,
+Nelson
+
+Wed, May 31
+Volodymyr Khomenkoem 08:33 AM
+Thanks.
+I'm considering it now.
+
+Volodymyr Khomenkoem 09:08 AM
+Hello, Nelson. While trying to initialize the bot, I encountered an error like this.
+image.png 
+image.png
+Will you please teach me how to avoid this?
+Volodymyr Khomenkoem 10:38 AM
+Hi, Nelson. I'd like to have a call with you and discuss the task.
+Will you leave a message if you are available?
+
+Nelson Tan 07:54 PM
+Hi Volodymyr,
+Sure, you can reach me via Skype, MS Teams, WhatApp or Zoom if you know how to set up the call. State your Polish date and time or Singapore time.
+I also have some questions about your identity. I'm not sure why you withdraw your proposal, your name can't be searched, your profile page is missing and recently one "Solomon Zhang" has been requesting for the zip file on Google Drive. I don't know if Solomon is you or someone associated with you. This somewhat upsets me.
+But let's talk to sort the issues out.
+As for your error:
+Setup a free endpoint at nodereal.io by choosing "BSC RPC API Package Endpoint" and copy the mainnet "https://..." and paste for BSC_NODE_PROVIDER_URL in .env file.
+best regards,
+Nelson
+
+NodeReal - One-stop Blockchain Infrastructure Provider
+NodeReal empowers developers and investors to explore blockchain with the most reliable solutions and enables enterprises to generate business opportunities.
+Nelson Tan 09:18 PM
+If error persists, check the Issues section: https://github.com/lmusarella/Pancakeswap-Prediction-Bot/issues
+Or start a new thread and wait for the creator or fellow users to reply.
+
+GitHub
+Issues · lmusarella/Pancakeswap-Prediction-Bot
+I rewrote the code of the PancakeSwap Prediction Game BOT by bobalice7, removing the malicious code where for each transaction to the smart contract it sent transactions to this wallet 0xfB669b0e06...
+Volodymyr Khomenkoem 10:01 PM
+Sorry for being late, Nelson. let me follow the instruction you gave.
+
+Volodymyr Khomenkoem 10:24 PM
+I copied the mainnet and pasted in .env, but still same errors
+can we meet on skype?
+
+Nelson Tan 10:27 PM
+Can we meet 1 hour from now? My skype name is tankiatwee.
+
+Volodymyr Khomenkoem 10:27 PM
+sure, no problem.
+
+Nelson Tan 10:36 PM
+Are you running the bot in node.js command prompt?
+
+
+
+
+====================================doc attached====================================
+1) 1 way to extend Martingale goes like this:
+Base bet = 1
+a) 1 = lose, 2 = lose, 1 = lose, 1 = lose, 1 = lose, 1 = win, 4 = win
+b) 1 = lose, 2 = lose, 1 = lose, 1 = lose, 1 = win, 4 = lose, 1 = lose, 1 = win, 8 = lose, 1 = lose, 1 = lose, 1 = win, 16 = win
+What this means is whenever a martingale bet loses, betting automation bets on 1* until it wins then doubles on the next stage of martingale bet.
+* The minimum bet amount for PCS Prediction is 0.001 bnb = 32 us cents. These are meant to be throwaway bets. Either the modified bot auto-detects the minimum required amount (in the event it changes invariably) or the user inputs “throwaway bet = 0.32” as a settings option in bot-configuration.js file.
+If it is a user setting, and if it falls below required amount (e.g. user inputs 29 cents), perhaps the bot should stop? Programmer decides what’s best in terms of functional outcome.
+2) This betting method only requires that martingale be applied to the ‘first’ losing bet; no martingale on subsequent losing bets.
+Please familiarize by playing with numbers in the accompanying Excel sheet.
+Explanation: 1 set has 5 betting rounds. For starting capital of $2500, you risk $5 in round one. If you win, you claim $5 + 70% reward = $8.5 (It’s 9 in Excel because I round off to whole numbers).
+It is understood that your first profit is “170% Reward” - “Risk Amount” = $3.5. Now, you take 70% out of $3.5 to bet on round 2. If you lose this round, you still have 30% x 3.5 = $1.05 profit and you go back to 1st round base bet.
+If you win 2nd round, no more “170% Reward” subtract “Risk Amount”. Just take 70% out of “170% Reward” and bet 3rd round. If lose 3rd round, you still have 1st round 30% leftover profit + 2nd round 30% leftover profit. Go back to 1st round base bet.
+Keep winning 5 consecutive rounds and restart a new set.
+3) Combine the 2 above methods and I can’t see why you would go bankrupt! Only problem is it will test manual binary traders’ patience to “work full-time”.
